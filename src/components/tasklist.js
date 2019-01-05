@@ -1,17 +1,18 @@
 import React from 'react';
+import Task from './task';
 
-class Header extends React.Component{
+class Tasklist extends React.Component{
 
     render() {
         return (
-        <div style={styles.header} class="row">
-        <div class="my-task-list col-sm-12"> <p> Things for Doing</p></div>
+        <div  class="container">
+        <Task />
         </div>
         )
 }
 }
 
-const styles = {
+/*const styles = {
     header : {
         color: 'rgb(85, 107, 47, 0.94)',
         textAlign: 'center',
@@ -26,6 +27,6 @@ const styles = {
         
     }
 
-};
+};*/
 
-export default Header;
+export default Tasklist;

@@ -1,0 +1,37 @@
+import React from 'react';
+import DeleteButton from './deletebutton';
+import DoneButton from './donebutton';
+
+class Task extends React.Component{
+
+    render() {
+        return (
+        <div style={styles.header} class="row">
+          <div class="col-sm-1">1.</div>
+          <div class="col-sm-6">This is a task description </div>
+          <div class="col-sm-2"> <DoneButton /> </div>
+          <div class="col-sm-2"> <DeleteButton />  </div>
+        </div>
+
+        )
+}
+}
+
+const styles = {
+    header : {
+        color: 'rgb(85, 107, 47, 0.94)',
+        textAlign: 'center',
+        backgroundColor: 'rgba(240, 241, 229, 0.8)',
+        fontFamily: 'Garamond',
+        padding: '0.2em',
+        fontSize: '2em',
+        opacity: '50%',
+        border: '0.07em',
+        borderStyle: 'solid', 
+        borderRadius: '0.5em',
+        marginTop: '10px'
+    }
+
+};
+
+export default Task;
