@@ -4,7 +4,7 @@ import Header from './components/header';
 class App extends Component {
   render() {
     return (
-      <div className="Container">
+      <div className="container">
       <Header />
       </div>
     );
