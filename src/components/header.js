@@ -17,7 +17,7 @@ const styles = {
         textAlign: 'center',
         backgroundColor: 'rgba(240, 241, 229, 0.8)',
         fontFamily: 'Great Vibes',
-        padding: '0.2em',
+        padding: '0.1em',
         fontSize: '5em',
         opacity: '50%',
         border: '0.07em',

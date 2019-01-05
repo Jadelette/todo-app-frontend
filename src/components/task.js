@@ -6,7 +6,7 @@ class Task extends React.Component{
 
     render() {
         return (
-        <div style={styles.header} class="row">
+        <div style={styles.task} class="row">
           <div class="col-sm-1">1.</div>
           <div class="col-sm-6">This is a task description </div>
           <div class="col-sm-2"> <DoneButton /> </div>
@@ -18,7 +18,7 @@ class Task extends React.Component{
 }
 
 const styles = {
-    header : {
+    task : {
         color: 'rgb(85, 107, 47, 0.94)',
         textAlign: 'center',
         backgroundColor: 'rgba(240, 241, 229, 0.8)',
@@ -29,7 +29,8 @@ const styles = {
         border: '0.07em',
         borderStyle: 'solid', 
         borderRadius: '0.5em',
-        marginTop: '10px'
+        marginTop: '10px',
+        fontStyle: 'italic'
     }
 
 };
