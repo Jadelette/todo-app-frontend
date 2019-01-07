@@ -4,9 +4,9 @@ class AddButton extends React.Component{
 
     render() {
         return (
-          <button style={styles.add} type="button" >add</button>
+          <button style={styles.add} type="button" onClick={this.props.clickHandler}>add</button>
         )
-}
+    }
 }
 
 const styles = {
