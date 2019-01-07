@@ -4,13 +4,25 @@ import AddButton from './addbutton';
 
 
 class AddNewTask extends React.Component {
+//Constructor
+constructor(props) {
+    super(props);
+
+    this.onAddClicked = this.onAddClicked.bind(this);
+}
+
+//event handling
+onAddClicked() {
+    alert ("Hello, BBC Step into Tech");
+}
+
 
     render() {
         return (
             <div style={styles.addTask} class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-4"> <InputField /> </div>
-                <div class="col-sm-2"> <AddButton /> </div>
+                <div class="col-sm-2"> <AddButton onClick = {this.onAddClicked}  /> </div>
                 <div class="col-sm-3"></div>
             </div>
         )
@@ -30,4 +42,5 @@ const styles = {
     }
 };
 
-export default AddNewTask;
+export default AddNewTask 
+
