@@ -22,7 +22,7 @@ onAddClicked() {
             <div style={styles.addTask} class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-4"> <InputField /> </div>
-                <div class="col-sm-2"> <AddButton onClick = {this.onAddClicked}  /> </div>
+                <div class="col-sm-2"> <AddButton clickHandler = {this.onAddClicked}  /> </div>
                 <div class="col-sm-3"></div>
             </div>
         )
