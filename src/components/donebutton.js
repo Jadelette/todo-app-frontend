@@ -20,7 +20,7 @@ const styles = {
        paddingLeft: '0.5em',
        paddingRight: '0.5em',
        fontFamily: 'Garamond',
-       fontSize: '0.7em'
+       fontSize: '0.7em',
     }
 
 };

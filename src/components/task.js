@@ -7,8 +7,8 @@ class Task extends React.Component{
     render() {
         return (
         <div style={styles.task} class="row">
-          <div class="col-sm-1">1.</div>
-          <div class="col-sm-6">This is a task description </div>
+          <div class="col-sm-1">{this.props.taskNumber}</div>
+          <div class="col-sm-6"> {this.props.taskDescription}  </div>
           <div class="col-sm-2"> <DoneButton /> </div>
           <div class="col-sm-2"> <DeleteButton />  </div>
         </div>
