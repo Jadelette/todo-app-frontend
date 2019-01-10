@@ -22,7 +22,8 @@ const styles = {
         opacity: '50%',
         border: '0.07em',
         borderStyle: 'solid', 
-        borderRadius: '0.5em'
+        borderRadius: '0.5em',
+        marginTop: '0.9 em'
         
     }
 

@@ -29,7 +29,7 @@ const styles = {
         border: '0.07em',
         borderStyle: 'solid', 
         borderRadius: '0.5em',
-        marginTop: '10px',
+        marginBottom: '20px',
         fontStyle: 'italic'
     }
 

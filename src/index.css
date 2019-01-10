@@ -7,8 +7,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: rgb(243, 239, 200);
-  /*color: rgb(85, 107, 47)*/
+  background-color: #d5d5c3;
+  background-image: url("./assets/ivyborder.jpg");
+  background-repeat: repeat-y;
+  height: 100%;
+  background-size: 40%;
+  background-position-x: 2%;
+  /*color: rgb(85, 107, 47) kahki bckgrd #d5d5c3 */
 }
   
 
