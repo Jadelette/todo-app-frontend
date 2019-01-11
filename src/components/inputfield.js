@@ -4,7 +4,7 @@ class InputField extends React.Component {
 
     render() {
         return (
-            <form> New task: <input style={styles.input} type="text" name="entry" multiple id="input-box" /> </form>
+            <form> New task: <input style={styles.input} type="text" value={this.props.taskValue} onChange={this.props.changeHandler}/> </form>
         )
     }
 }

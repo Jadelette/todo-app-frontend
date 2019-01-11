@@ -23,7 +23,7 @@ const styles = {
         border: '0.07em',
         borderStyle: 'solid', 
         borderRadius: '0.5em',
-        marginTop: '0.9 em'
+        marginTop: '50px'
         
     }
 

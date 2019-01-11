@@ -4,25 +4,41 @@ import AddButton from './addbutton';
 
 
 class AddNewTask extends React.Component {
-//Constructor
-constructor(props) {
-    super(props);
 
-    this.onAddClicked = this.onAddClicked.bind(this);
-}
+    //Constructor
+    constructor(props) {
+        super(props);
 
-//event handling
-onAddClicked() {
-    alert ("Hello, BBC Step into Tech");
-}
+        this.state = {
+            taskDescription: ""
+        };
+
+        //event binding functions
+        this.onAddClicked = this.onAddClicked.bind(this);
+        this.onInputfieldUpdated = this.onInputfieldUpdated.bind(this);
+    }
+
+
+    //event handling
+    onAddClicked() {
+        alert(this.state.taskValue);
+    }
+
+    onInputfieldUpdated(event) {
+        const description = event.target.taskValue;
+
+        this.setState({
+            taskDescription: description
+        });
+    }
 
 
     render() {
         return (
             <div style={styles.addTask} class="row">
                 <div class="col-sm-3"></div>
-                <div class="col-sm-4"> <InputField /> </div>
-                <div class="col-sm-2"> <AddButton clickHandler = {this.onAddClicked}  /> </div>
+                <div class="col-sm-4"> <InputField taskValue={this.state.taskDescription} changeHandler={this.onInputfieldUpdated} /> </div>
+                <div class="col-sm-2"> <AddButton clickHandler={this.onAddClicked} /> </div>
                 <div class="col-sm-3"></div>
             </div>
         )
@@ -42,5 +58,5 @@ const styles = {
     }
 };
 
-export default AddNewTask 
+export default AddNewTask
 
