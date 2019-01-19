@@ -6,12 +6,11 @@ class InputField extends React.Component {
         super(props);
 
         this.onTextFieldChange = this.onTextFieldChange.bind(this);
+        this.handleKeyPress=this.handleKeyPress.bind(this);
 
         this.state = {
             textFieldValue: ""
         }
-
-        this.handleKeyPress=this.handleKeyPress.bind(this);
     }
 
     onTextFieldChange(event) {
