@@ -10,6 +10,8 @@ class InputField extends React.Component {
         this.state = {
             textFieldValue: ""
         }
+
+        this.handleKeyPress=this.handleKeyPress.bind(this);
     }
 
     onTextFieldChange(event) {
@@ -19,9 +21,15 @@ class InputField extends React.Component {
         this.props.changeHandler(textFieldValue);
     }
 
+    handleKeyPress(target, event) {
+        if(target.charCode==13){
+                this.props.onEnterPressed();    
+        }
+    };
+
     render() {
         return (
-            <form> New task: <input style={styles.input} type="text" value={this.props.taskValue} onChange={this.onTextFieldChange}/> </form>
+            <form > New task: <input style={styles.input} type="text" value={this.props.taskValue} onChange={this.onTextFieldChange} onKeyPress={this.handleKeyPress}/> </form>
         )
     }
 }

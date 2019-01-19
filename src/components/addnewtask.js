@@ -20,7 +20,16 @@ class AddNewTask extends React.Component {
 
     //event handling
     onAddClicked() {
-        alert(this.state.taskDescription);
+        const taskToAdd = {
+            id: (Math.random()*100),
+            description: this.state.taskDescription,
+            done: false
+        };
+
+        this.props.onAddTaskHandler(taskToAdd);
+        this.setState({
+            taskDescription: ""
+        });
     }
 
     onInputfieldUpdated(textFieldValue) {
@@ -34,7 +43,7 @@ class AddNewTask extends React.Component {
         return (
             <div style={styles.addTask} class="row">
                 <div className="col-sm-3"></div>
-                <div className="col-sm-4"> <InputField taskValue={this.state.taskDescription} changeHandler={this.onInputfieldUpdated} /> </div>
+                <div className="col-sm-4"> <InputField taskValue={this.state.taskDescription} changeHandler={this.onInputfieldUpdated} onEnterPressed={this.onAddClicked}/> </div>
                 <div className="col-sm-2"> <GreenButton clickHandler={this.onAddClicked} label={'add'}/> </div>
                 <div className="col-sm-3"></div>
             </div>
