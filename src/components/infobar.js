@@ -6,9 +6,9 @@ class InfoBar extends React.Component {
     render() {
         return (
             <div style={styles.infobar} class="container">
-            <div class="row">
-                <div  class="col-sm-3">Active Tasks: </div>
-                <div class="col-sm-1"><TaskCounter /></div>
+            <div className="row">
+                <div  className="col-sm-3">Active Tasks: </div>
+                <div className="col-sm-1"><TaskCounter /></div>
                 </div>
             </div>
         )

@@ -1,6 +1,6 @@
 import React from 'react';
 import InputField from './inputfield';
-import AddButton from './addbutton';
+import GreenButton from './greenbutton';
 
 
 class AddNewTask extends React.Component {
@@ -18,17 +18,14 @@ class AddNewTask extends React.Component {
         this.onInputfieldUpdated = this.onInputfieldUpdated.bind(this);
     }
 
-
     //event handling
     onAddClicked() {
-        alert(this.state.taskValue);
+        alert(this.state.taskDescription);
     }
 
-    onInputfieldUpdated(event) {
-        const description = event.target.taskValue;
-
+    onInputfieldUpdated(textFieldValue) {
         this.setState({
-            taskDescription: description
+            taskDescription: textFieldValue
         });
     }
 
@@ -36,10 +33,10 @@ class AddNewTask extends React.Component {
     render() {
         return (
             <div style={styles.addTask} class="row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-4"> <InputField taskValue={this.state.taskDescription} changeHandler={this.onInputfieldUpdated} /> </div>
-                <div class="col-sm-2"> <AddButton clickHandler={this.onAddClicked} /> </div>
-                <div class="col-sm-3"></div>
+                <div className="col-sm-3"></div>
+                <div className="col-sm-4"> <InputField taskValue={this.state.taskDescription} changeHandler={this.onInputfieldUpdated} /> </div>
+                <div className="col-sm-2"> <GreenButton clickHandler={this.onAddClicked} label={'add'}/> </div>
+                <div className="col-sm-3"></div>
             </div>
         )
     }

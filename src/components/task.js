@@ -1,16 +1,30 @@
 import React from 'react';
-import DeleteButton from './deletebutton';
-import DoneButton from './donebutton';
+import RedButton from './redbutton';
+import GreenButton from './greenbutton';
 
 class Task extends React.Component{
 
+    constructor(props) {
+        super(props);
+
+        this.onDoneClicked = this.onDoneClicked.bind(this);
+    }
+
+    onDoneClicked() {
+        alert('this task is done');
+    }
+
+    onDeleteClicked(){
+        alert('this task has been deleted');
+    }
+
     render() {
         return (
-        <div style={styles.task} class="row">
-          <div class="col-sm-1">{this.props.taskNumber}</div>
-          <div class="col-sm-6"> {this.props.taskDescription}  </div>
-          <div class="col-sm-2"> <DoneButton /> </div>
-          <div class="col-sm-2"> <DeleteButton />  </div>
+        <div style={styles.task} className="row">
+          <div className="col-sm-1">{this.props.taskNumber}</div>
+          <div className="col-sm-6"> {this.props.taskDescription}  </div>
+          <div className="col-sm-2"> <GreenButton label={'done'} clickHandler={this.onDoneClicked} /> </div>
+          <div className="col-sm-2"> <RedButton label={'delete'} clickHandler={this.onDeleteClicked}/>  </div>
         </div>
 
         )

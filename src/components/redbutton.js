@@ -1,13 +1,10 @@
 import React from 'react';
 
-class DeleteButton extends React.Component{
+class RedButton extends React.Component{
 
     render() {
         return (
-        <div  class="row">
-          <button style={styles.delete} type="button">delete</button>
-        </div>
-
+          <button style={styles.delete} type="button" onClick={this.props.clickHandler}>{this.props.label} </button>
         )
 }
 }
@@ -25,4 +22,4 @@ const styles = {
 
 };
 
-export default DeleteButton;
+export default RedButton;

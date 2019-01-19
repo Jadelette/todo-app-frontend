@@ -4,7 +4,7 @@ class TaskCounter extends React.Component {
 
     render() {
         return (
-                <div class="col-sm-6"> 2 </div>
+                <div className="col-sm-6"> 2 </div>
         )
     }
 }

@@ -4,7 +4,7 @@ class Header extends React.Component{
 
     render() {
         return (
-        <div style={styles.header} class="row">
+        <div style={styles.header} className="row">
         <div class="my-task-list col-sm-12"> <p> Things for Doing</p></div>
         </div>
         )

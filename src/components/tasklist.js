@@ -25,11 +25,17 @@ class Tasklist extends React.Component {
                 description: "Make sandwiches for lunch",
                 done: false
             },
+
+            {
+                id: 5,
+                description: "Take Ethan skateboarding",
+                done: false
+            }
         ]
 
         return (
-            <div style={styles.mytasks} class="container">
-                {listOfTasks.map((task, i) => <Task taskDescription={task.description} key={i} taskNumber={task.id} />)}
+            <div style={styles.mytasks} className="container">
+                {listOfTasks.map((task, i) => <Task taskDescription={task.description} key={i} taskNumber={i+1} />)}
             </div>
         )
     }

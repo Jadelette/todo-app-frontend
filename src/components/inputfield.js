@@ -2,9 +2,26 @@ import React from 'react';
 
 class InputField extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.onTextFieldChange = this.onTextFieldChange.bind(this);
+
+        this.state = {
+            textFieldValue: ""
+        }
+    }
+
+    onTextFieldChange(event) {
+        const textFieldValue = event.target.value;
+        this.setState({textFieldValue: textFieldValue});
+
+        this.props.changeHandler(textFieldValue);
+    }
+
     render() {
         return (
-            <form> New task: <input style={styles.input} type="text" value={this.props.taskValue} onChange={this.props.changeHandler}/> </form>
+            <form> New task: <input style={styles.input} type="text" value={this.props.taskValue} onChange={this.onTextFieldChange}/> </form>
         )
     }
 }
