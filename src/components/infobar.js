@@ -1,28 +1,17 @@
 import React from 'react';
 
+
 class InfoBar extends React.Component {
 
-    constructor(props) {
-        super(props);
+   
 
-        this.state = {
-            counterValue: ""
-        }
-    }
-
-    onCountIncreased(){
-        this.setState({
-            counterValue: {this.bob}
-        });
-
-    }
-
+   
     render() {
         return (
-            <div style={styles.infobar} class="container" bob={this.onAddTaskHandler}>
+            <div style={styles.infobar} class="container" >
             <div className="row">
-                <div  className="col-sm-3">Active Tasks: </div>
-                <div className="col-sm-1" >{this.state.counterValue}</div>
+                <div  className="col-sm-2">Active Tasks: </div>
+                <div className="col-sm-1" >{this.props.activeTasks.length}</div>
                 </div>
             </div>
         )

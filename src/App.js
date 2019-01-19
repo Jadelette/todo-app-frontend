@@ -13,7 +13,7 @@ constructor(props) {
   };
 
   this.addTask=this.addTask.bind(this); 
-  this.getTaskCount=this.getTaskCount.bind(this);
+  
 }
 
 addTask(task) {
@@ -24,11 +24,6 @@ addTask(task) {
   });
 }
 
-getTaskCount(){
-  let currentListOfTasks = this.state.tasks;
-  let activeTasks = currentListOfTasks.length();
-  return activeTasks;
-}
 
   render() {
     return (
@@ -36,7 +31,7 @@ getTaskCount(){
       <Header />
       <AddNewTask onAddTaskHandler = {this.addTask}/>
       <hr/>
-      <InfoBar onAddTaskHandler={this.getTaskCount}/>
+      <InfoBar activeTasks={this.state.tasks}/>
       <Tasklist tasks={this.state.tasks} />
       </div>
     );
