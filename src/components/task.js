@@ -12,12 +12,12 @@ class Task extends React.Component{
     }
 
     onDoneClicked() {
-        alert(this.props.taskID);
+        const completedTask = this.props.taskID;
+        this.props.onCompleteTaskHandler(completedTask);
     }
 
     onDeleteClicked(){
         const taskToDelete = this.props.taskID;
-        
         this.props.onDeleteTaskHandler(taskToDelete);
     }
 
@@ -25,10 +25,15 @@ class Task extends React.Component{
         return (
         <div style={styles.task} className="row">
           <div className="col-sm-1">{this.props.taskNumber}</div>
-          <div className="col-sm-6"> {this.props.taskDescription}  </div>
+          <div className="col-sm-6"> {this.props.taskDescription}</div>
+          {this.props.showButtons &&
           <div className="col-sm-2"> <GreenButton label={'done'} clickHandler={this.onDoneClicked} /> </div>
+          }
+          {this.props.showButtons &&
           <div className="col-sm-2"> <RedButton label={'delete'} clickHandler={this.onDeleteClicked} />  </div>
+          }
         </div>
+          
 
         )
 }

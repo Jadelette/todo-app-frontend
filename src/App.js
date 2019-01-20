@@ -16,6 +16,7 @@ constructor(props) {
 
   this.addTask=this.addTask.bind(this); 
   this.deleteTask=this.deleteTask.bind(this);
+  this.completeTask=this.completeTask.bind(this);
 }
 
 addTask(task) {
@@ -34,6 +35,22 @@ deleteTask(taskID) {
   });
 }
 
+completeTask(taskID) {
+  let currentListOfTasks = this.state.activeTasks;
+  let currentCompletedTasks = this.state.completedTasks;
+
+  const completedTask = currentListOfTasks.filter((task) => task.id===taskID);
+  alert(JSON.stringify(completedTask));
+
+  currentCompletedTasks.push(completedTask);
+
+  currentListOfTasks.splice(currentListOfTasks.indexOf(taskID));
+  
+  this.setState({
+    activeTasks: currentListOfTasks,
+    completedTasks: currentCompletedTasks
+  });
+}
 
   render() {
     return (
@@ -42,7 +59,7 @@ deleteTask(taskID) {
       <AddNewTask onAddTaskHandler = {this.addTask}/>
       <hr/>
       <InfoBar description="Active Tasks" items={this.state.activeTasks}/>
-      <Tasklist tasks={this.state.activeTasks} onDeleteTaskHandler={this.deleteTask} />
+      <Tasklist tasks={this.state.activeTasks} onDeleteTaskHandler={this.deleteTask} onCompleteTaskHandler={this.completeTask} />
       <hr/>
       <InfoBar description="Completed Tasks" items={this.state.completedTasks}/>
       <CompletedTasklist tasks={this.state.completedTasks}/>

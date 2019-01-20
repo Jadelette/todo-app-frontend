@@ -15,6 +15,8 @@ class Tasklist extends React.Component {
                     taskNumber={i+1} 
                     taskID={task.id} 
                     onDeleteTaskHandler={this.props.onDeleteTaskHandler}
+                    onCompleteTaskHandler={this.props.onCompleteTaskHandler}
+                    showButtons = {true}
                 />)}
             </div>
         )

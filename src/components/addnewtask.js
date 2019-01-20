@@ -20,9 +20,11 @@ class AddNewTask extends React.Component {
 
     //event handling
     onAddClicked() {
+        const taskDescription = this.state.taskDescription;
+
         const taskToAdd = {
             id: Math.floor((Math.random() * 100)),
-            description: this.state.taskDescription,
+            description: taskDescription,
             done: false
         };
 
