@@ -11,7 +11,7 @@ class Task extends React.Component{
     }
 
     onDoneClicked() {
-        alert('this task is done');
+        alert("this task is done")
     }
 
     onDeleteClicked(){
