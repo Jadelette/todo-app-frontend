@@ -8,7 +8,14 @@ class Tasklist extends React.Component {
 
         return (
             <div style={styles.mytasks} className="container">
-                {this.props.tasks.map((task, i) => <Task taskDescription={task.description} key={i} taskNumber={i+1} />)}
+                {this.props.tasks.map((task, i) => 
+                <Task 
+                    taskDescription={task.description} 
+                    key={i} 
+                    taskNumber={i+1} 
+                    taskID={task.id} 
+                    onDeleteTaskHandler={this.props.onDeleteTaskHandler}
+                />)}
             </div>
         )
     }

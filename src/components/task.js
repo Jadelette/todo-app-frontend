@@ -8,14 +8,17 @@ class Task extends React.Component{
         super(props);
 
         this.onDoneClicked = this.onDoneClicked.bind(this);
+        this.onDeleteClicked = this.onDeleteClicked.bind(this);
     }
 
     onDoneClicked() {
-        alert("this task is done")
+        alert(this.props.taskID);
     }
 
     onDeleteClicked(){
-        alert('this task has been deleted');
+        const taskToDelete = this.props.taskID;
+        
+        this.props.onDeleteTaskHandler(taskToDelete);
     }
 
     render() {
@@ -24,7 +27,7 @@ class Task extends React.Component{
           <div className="col-sm-1">{this.props.taskNumber}</div>
           <div className="col-sm-6"> {this.props.taskDescription}  </div>
           <div className="col-sm-2"> <GreenButton label={'done'} clickHandler={this.onDoneClicked} /> </div>
-          <div className="col-sm-2"> <RedButton label={'delete'} clickHandler={this.onDeleteClicked}/>  </div>
+          <div className="col-sm-2"> <RedButton label={'delete'} clickHandler={this.onDeleteClicked} />  </div>
         </div>
 
         )
