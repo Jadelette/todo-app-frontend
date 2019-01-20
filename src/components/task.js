@@ -17,7 +17,7 @@ class Task extends React.Component{
     }
 
     onDeleteClicked(){
-        const taskToDelete = this.props.taskID;
+        const taskToDelete = this.props.taskID
         this.props.onDeleteTaskHandler(taskToDelete);
     }
 

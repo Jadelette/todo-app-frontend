@@ -27,9 +27,13 @@ addTask(task) {
   });
 }
 
+
 deleteTask(taskID) {
   let currentListOfTasks = this.state.activeTasks;
-  currentListOfTasks.splice(currentListOfTasks.indexOf(taskID));
+  const indexToDelete = currentListOfTasks.findIndex(i => i.id===taskID);
+  
+  currentListOfTasks.splice(indexToDelete, 1);
+
   this.setState({
     activeTasks: currentListOfTasks
   });
@@ -39,13 +43,14 @@ completeTask(taskID) {
   let currentListOfTasks = this.state.activeTasks;
   let currentCompletedTasks = this.state.completedTasks;
 
-  const completedTask = currentListOfTasks.filter((task) => task.id===taskID);
-  alert(JSON.stringify(completedTask));
+ const newCompletedTask = currentListOfTasks.filter((task) => task.id===taskID);
+ alert(JSON.stringify(newCompletedTask));
+ currentCompletedTasks.push(newCompletedTask);
 
-  currentCompletedTasks.push(completedTask);
-
-  currentListOfTasks.splice(currentListOfTasks.indexOf(taskID));
-  
+ const indexToDelete = currentListOfTasks.findIndex(i => i.id===taskID);
+ alert(indexToDelete);
+ currentListOfTasks.splice(indexToDelete, 1);
+ 
   this.setState({
     activeTasks: currentListOfTasks,
     completedTasks: currentCompletedTasks
