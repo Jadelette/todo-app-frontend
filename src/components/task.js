@@ -9,6 +9,7 @@ class Task extends React.Component{
 
         this.onDoneClicked = this.onDoneClicked.bind(this);
         this.onDeleteClicked = this.onDeleteClicked.bind(this);
+        this.onRestoreClicked = this.onRestoreClicked.bind(this);
     }
 
     onDoneClicked() {
@@ -21,6 +22,11 @@ class Task extends React.Component{
         this.props.onDeleteTaskHandler(taskToDelete);
     }
 
+    onRestoreClicked(){
+        const taskToRestore = this.props.taskID;
+        this.props.onRestoreTaskHandler(taskToRestore);
+    }
+
     render() {
         return (
         <div style={styles.task} className="row">
@@ -28,6 +34,9 @@ class Task extends React.Component{
           <div className="col-sm-6"> {this.props.taskDescription}</div>
           {!(this.props.taskCompleted) &&
           <div className="col-sm-2"> <GreenButton label={'done'} clickHandler={this.onDoneClicked} /> </div>
+          }
+          {(this.props.taskCompleted) &&
+          <div className="col-sm-2"> <GreenButton label={'restore'} clickHandler={this.onRestoreClicked} /> </div>
           }
           {!(this.props.taskCompleted) &&
           <div className="col-sm-2"> <RedButton label={'delete'} clickHandler={this.onDeleteClicked} />  </div>

@@ -17,6 +17,7 @@ constructor(props) {
   this.addTask=this.addTask.bind(this); 
   this.deleteTask=this.deleteTask.bind(this);
   this.completeTask=this.completeTask.bind(this);
+  this.restoreTask = this.restoreTask.bind(this);
 }
 
 addTask(task) {
@@ -46,8 +47,8 @@ completeTask(taskID) {
  const newCompletedTask = currentListOfTasks.filter((task) => task.id===taskID);
  newCompletedTask.done = true;
  alert(JSON.stringify(newCompletedTask));
- currentCompletedTasks.unshift(newCompletedTask);
- 
+ currentCompletedTasks.push(newCompletedTask);
+
 
  const indexToDelete = currentListOfTasks.findIndex(i => i.id===taskID);
  currentListOfTasks.splice(indexToDelete, 1);
@@ -60,6 +61,25 @@ completeTask(taskID) {
   alert(JSON.stringify(currentCompletedTasks));
 }
 
+
+restoreTask(taskID) {
+  let currentListOfTasks = this.state.activeTasks;
+  let currentCompletedTasks = this.state.completedTasks;
+
+  const newTaskToRestore = currentListOfTasks.filter((task) => task.id===taskID);
+ newTaskToRestore.done = false;
+ currentListOfTasks.push(newTaskToRestore);
+
+ const indexToDelete = currentCompletedTasks.findIndex(i => i.id===taskID);
+ currentCompletedTasks.splice(indexToDelete, 1);
+
+ this.setState({
+  activeTasks: currentListOfTasks,
+  completedTasks: currentCompletedTasks
+});
+  alert('task has been restored')
+}
+
   render() {
     return (
       <div className="container">
@@ -70,7 +90,7 @@ completeTask(taskID) {
       <Tasklist tasks={this.state.activeTasks} onDeleteTaskHandler={this.deleteTask} onCompleteTaskHandler={this.completeTask} />
       <hr/>
       <InfoBar description="Completed Tasks" items={this.state.completedTasks}/>
-      <Tasklist tasks={this.state.completedTasks}/>
+      <Tasklist tasks={this.state.completedTasks} onRestoreTaskHandler={this.restoreTask} />
       </div>
     );
   }
