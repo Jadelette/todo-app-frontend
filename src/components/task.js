@@ -31,7 +31,8 @@ class Task extends React.Component{
         return (
         <div style={styles.task} className="row">
           <div className="col-sm-1">{this.props.taskNumber}</div>
-          <div className="col-sm-6"> {this.props.taskDescription}</div>
+          <div className="col-sm-4"> {this.props.taskDescription}</div>
+          <div className="col-sm-2">{this.props.taskDueDate}</div>
           {!(this.props.taskCompleted) &&
           <div className="col-sm-2"> <GreenButton label={'done'} clickHandler={this.onDoneClicked} /> </div>
           }
@@ -50,12 +51,12 @@ class Task extends React.Component{
 
 const styles = {
     task : {
-        color: 'rgb(85, 107, 47, 0.94)',
+        color: 'rgba(85, 107, 47, 0.94)',
         textAlign: 'center',
         backgroundColor: 'rgba(240, 241, 229, 0.8)',
         fontFamily: 'Garamond',
         padding: '0.2em',
-        fontSize: '2em',
+        fontSize: '1.8em',
         opacity: '50%',
         border: '0.07em',
         borderStyle: 'solid', 

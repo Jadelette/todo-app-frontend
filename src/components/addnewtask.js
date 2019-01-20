@@ -10,27 +10,33 @@ class AddNewTask extends React.Component {
         super(props);
 
         this.state = {
-            taskDescription: ""
+            taskDescription: "",
+            dueDate:""
         };
 
         //event binding functions
         this.onAddClicked = this.onAddClicked.bind(this);
         this.onInputfieldUpdated = this.onInputfieldUpdated.bind(this);
+        this.onDueDateUpdated = this.onDueDateUpdated.bind(this);
     }
 
     //event handling
     onAddClicked() {
         const taskDescription = this.state.taskDescription;
+        const dueDate = this.state.dueDate;
 
         const taskToAdd = {
             id: Math.floor((Math.random() * 100)),
             description: taskDescription,
+            dueDate: dueDate,
             done: false
         };
 
         this.props.onAddTaskHandler(taskToAdd);
+
         this.setState({
-            taskDescription: ""
+            taskDescription: "",
+            dueDate: "" //why doesn't this work? 
         });
     }
 
@@ -40,23 +46,43 @@ class AddNewTask extends React.Component {
         });
     }
 
+    onDueDateUpdated(textFieldValue){
+        this.setState({
+            dueDate: textFieldValue
+        });
+    }
+
 
     render() {
         return (
             <div style={styles.addTask} class="row">
-                <div className="col-sm-4"></div>
+                <div className="col-sm-2"></div>
                 <div className="col-sm-3">
+                Task: 
                     <InputField
                         taskValue={this.state.taskDescription}
                         changeHandler={this.onInputfieldUpdated}
                         onEnterPressed={this.onAddClicked}
+                        placeholder="enter new task"
+                        type="text"
                     />
                 </div>
 
-                <div className="col-sm-1">
+                <div className="col-sm-3"> 
+                    Due: 
+                    <InputField
+                    taskValue={this.state.dueDate}
+                    changeHandler={this.onDueDateUpdated}
+                    placeholder="enter due date"
+                    type="date"
+                    />
+                </div>
+
+                <div className="col-sm-2">
                     <GreenButton
                         clickHandler={this.onAddClicked}
                         label={'add'}
+                        
                     />
                 </div>
 
@@ -74,6 +100,7 @@ const styles = {
         marginTop: '20px',
         marginBottom: '20px',
         fontWeight: 'bold',
+        alignItems: 'center'
         /*fontStyle: 'italic'*/
     }
 };

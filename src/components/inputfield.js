@@ -31,11 +31,12 @@ class InputField extends React.Component {
             <form > 
                 <input 
                     style={styles.input}
-                    type="text" 
+                    type={this.props.type}
                     value={this.props.taskValue}
                     onChange={this.onTextFieldChange}
                     onKeyPress={this.handleKeyPress} 
-                    placeholder="enter new task"
+                    placeholder={this.props.placeholder}
+                    
                     />
             </form>
         )
@@ -44,7 +45,7 @@ class InputField extends React.Component {
 
 const styles = {
     input: {
-        color: 'rgb(85, 107, 47, 0.94)',
+        color: 'rgba(85, 107, 47, 0.94)',
         textAlign: 'center',
         backgroundColor: 'rgba(240, 241, 229, 0.8)',
         fontFamily: 'Garamond',

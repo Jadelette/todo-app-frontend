@@ -23,6 +23,7 @@ constructor(props) {
 addTask(task) {
   let currentListOfTasks = this.state.activeTasks;
   currentListOfTasks.push(task);
+
   this.setState({
     activeTasks: currentListOfTasks
   });
@@ -33,12 +34,18 @@ deleteTask(taskID) {
   let currentListOfTasks = this.state.activeTasks;
   const indexToDelete = currentListOfTasks.findIndex(i => i.id===taskID);
 
+  alert('Task deleted: ' + currentListOfTasks[indexToDelete].description);
+
   currentListOfTasks.splice(indexToDelete, 1);
 
   this.setState({
     activeTasks: currentListOfTasks
   });
+
+  
 }
+
+
 
 completeTask(taskID) {
   let currentListOfTasks = this.state.activeTasks;
@@ -56,6 +63,8 @@ completeTask(taskID) {
     activeTasks: currentListOfTasks,
     completedTasks: currentCompletedTasks
   });
+
+  alert('Task completed: ' + newCompletedTask.description);
 }
 
 
@@ -74,7 +83,7 @@ restoreTask(taskID) {
   activeTasks: currentListOfTasks,
   completedTasks: currentCompletedTasks
 });
-  alert('Task restored' + newTaskToRestore.description)
+  alert('Task restored: ' + newTaskToRestore.description)
 }
 
   render() {
