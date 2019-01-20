@@ -26,10 +26,10 @@ class Task extends React.Component{
         <div style={styles.task} className="row">
           <div className="col-sm-1">{this.props.taskNumber}</div>
           <div className="col-sm-6"> {this.props.taskDescription}</div>
-          {this.props.showButtons &&
+          {!(this.props.taskCompleted) &&
           <div className="col-sm-2"> <GreenButton label={'done'} clickHandler={this.onDoneClicked} /> </div>
           }
-          {this.props.showButtons &&
+          {!(this.props.taskCompleted) &&
           <div className="col-sm-2"> <RedButton label={'delete'} clickHandler={this.onDeleteClicked} />  </div>
           }
         </div>

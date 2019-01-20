@@ -4,8 +4,6 @@ import Task from './task';
 class Tasklist extends React.Component {
 
     render() {
-        
-
         return (
             <div style={styles.mytasks} className="container">
                 {this.props.tasks.map((task, i) => 
@@ -14,9 +12,9 @@ class Tasklist extends React.Component {
                     key={i} 
                     taskNumber={i+1} 
                     taskID={task.id} 
+                    taskCompleted={task.done}
                     onDeleteTaskHandler={this.props.onDeleteTaskHandler}
                     onCompleteTaskHandler={this.props.onCompleteTaskHandler}
-                    showButtons = {true}
                 />)}
             </div>
         )

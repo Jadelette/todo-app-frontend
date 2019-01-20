@@ -25,6 +25,7 @@ class AddNewTask extends React.Component {
         const taskToAdd = {
             id: Math.floor((Math.random() * 100)),
             description: taskDescription,
+            done: false
         };
 
         this.props.onAddTaskHandler(taskToAdd);

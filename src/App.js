@@ -3,7 +3,7 @@ import Header from './components/header';
 import Tasklist from './components/tasklist';
 import InfoBar from './components/infobar';
 import AddNewTask from './components/addnewtask';
-import CompletedTasklist from './components/completedTasklist';
+
 
 class App extends Component {
 constructor(props) {
@@ -31,7 +31,7 @@ addTask(task) {
 deleteTask(taskID) {
   let currentListOfTasks = this.state.activeTasks;
   const indexToDelete = currentListOfTasks.findIndex(i => i.id===taskID);
-  
+
   currentListOfTasks.splice(indexToDelete, 1);
 
   this.setState({
@@ -44,17 +44,20 @@ completeTask(taskID) {
   let currentCompletedTasks = this.state.completedTasks;
 
  const newCompletedTask = currentListOfTasks.filter((task) => task.id===taskID);
+ newCompletedTask.done = true;
  alert(JSON.stringify(newCompletedTask));
- currentCompletedTasks.push(newCompletedTask);
+ currentCompletedTasks.unshift(newCompletedTask);
+ 
 
  const indexToDelete = currentListOfTasks.findIndex(i => i.id===taskID);
- alert(indexToDelete);
  currentListOfTasks.splice(indexToDelete, 1);
  
   this.setState({
     activeTasks: currentListOfTasks,
     completedTasks: currentCompletedTasks
   });
+
+  alert(JSON.stringify(currentCompletedTasks));
 }
 
   render() {
@@ -67,7 +70,7 @@ completeTask(taskID) {
       <Tasklist tasks={this.state.activeTasks} onDeleteTaskHandler={this.deleteTask} onCompleteTaskHandler={this.completeTask} />
       <hr/>
       <InfoBar description="Completed Tasks" items={this.state.completedTasks}/>
-      <CompletedTasklist tasks={this.state.completedTasks}/>
+      <Tasklist tasks={this.state.completedTasks}/>
       </div>
     );
   }
