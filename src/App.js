@@ -44,9 +44,8 @@ completeTask(taskID) {
   let currentListOfTasks = this.state.activeTasks;
   let currentCompletedTasks = this.state.completedTasks;
 
- const newCompletedTask = currentListOfTasks.filter((task) => task.id===taskID);
+ const newCompletedTask = currentListOfTasks.filter((task) => task.id===taskID)[0];
  newCompletedTask.done = true;
- alert(JSON.stringify(newCompletedTask));
  currentCompletedTasks.push(newCompletedTask);
 
 
@@ -57,8 +56,6 @@ completeTask(taskID) {
     activeTasks: currentListOfTasks,
     completedTasks: currentCompletedTasks
   });
-
-  alert(JSON.stringify(currentCompletedTasks));
 }
 
 
@@ -66,9 +63,9 @@ restoreTask(taskID) {
   let currentListOfTasks = this.state.activeTasks;
   let currentCompletedTasks = this.state.completedTasks;
 
-  const newTaskToRestore = currentListOfTasks.filter((task) => task.id===taskID);
- newTaskToRestore.done = false;
- currentListOfTasks.push(newTaskToRestore);
+  const newTaskToRestore = currentCompletedTasks.filter((task) => task.id===taskID) [0];
+  newTaskToRestore.done = false;
+  currentListOfTasks.push(newTaskToRestore);
 
  const indexToDelete = currentCompletedTasks.findIndex(i => i.id===taskID);
  currentCompletedTasks.splice(indexToDelete, 1);
@@ -77,7 +74,7 @@ restoreTask(taskID) {
   activeTasks: currentListOfTasks,
   completedTasks: currentCompletedTasks
 });
-  alert('task has been restored')
+  alert('Task restored' + newTaskToRestore.description)
 }
 
   render() {
