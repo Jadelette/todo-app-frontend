@@ -3,13 +3,13 @@ import React from 'react';
 
 class InfoBar extends React.Component {
 
-   
+
     render() {
         return (
             <div style={styles.infobar} class="container" >
-            <div className="row">
-                <div  className="col-sm-2"> {this.props.description} </div>
-                <div className="col-sm-1" >{this.props.items.length}</div>
+                <div className="row">
+                    <div className="col-sm-2"> {this.props.description} </div>
+                    <div className="col-sm-1" >{this.props.items.length}</div>
                 </div>
             </div>
         )

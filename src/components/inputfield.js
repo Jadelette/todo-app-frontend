@@ -9,35 +9,40 @@ class InputField extends React.Component {
         this.handleKeyPress = this.handleKeyPress.bind(this);
 
         this.state = {
-            textFieldValue: ""
+            inputFieldValue: ""
         }
     }
 
     onTextFieldChange(event) {
-        const textFieldValue = event.target.value;
-        this.setState({ textFieldValue: textFieldValue });
+        const inputFieldValue = event.target.value;
+        this.setState({ inputFieldValue: inputFieldValue });
 
-        this.props.changeHandler(textFieldValue);
+        const inputFieldId = event.target.id;
+
+        this.props.changeHandler(inputFieldValue, inputFieldId);
     }
 
     handleKeyPress(target) {
         if (target.charCode === 13) {
             this.props.onEnterPressed();
+            target.preventDefault();
         }
+
+
     };
 
     render() {
         return (
-            <form > 
-                <input 
+            <form >
+                <input
                     style={styles.input}
                     type={this.props.type}
                     value={this.props.taskValue}
                     onChange={this.onTextFieldChange}
-                    onKeyPress={this.handleKeyPress} 
+                    onKeyPress={this.handleKeyPress}
                     placeholder={this.props.placeholder}
-                    
-                    />
+                    id={this.props.id}
+                />
             </form>
         )
     }
@@ -54,7 +59,7 @@ const styles = {
         borderStyle: 'solid',
         borderRadius: '0.5em',
         fontStyle: 'italic',
-        
+
     }
 
 };

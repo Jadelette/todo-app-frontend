@@ -62,7 +62,8 @@ const styles = {
         borderStyle: 'solid', 
         borderRadius: '0.5em',
         marginBottom: '20px',
-        fontStyle: 'italic'
+        fontStyle: 'italic',
+        alignItems: 'center'
     }
 
 };

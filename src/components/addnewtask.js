@@ -11,13 +11,12 @@ class AddNewTask extends React.Component {
 
         this.state = {
             taskDescription: "",
-            dueDate:""
+            dueDate: ""
         };
 
         //event binding functions
         this.onAddClicked = this.onAddClicked.bind(this);
         this.onInputfieldUpdated = this.onInputfieldUpdated.bind(this);
-        this.onDueDateUpdated = this.onDueDateUpdated.bind(this);
     }
 
     //event handling
@@ -36,21 +35,19 @@ class AddNewTask extends React.Component {
 
         this.setState({
             taskDescription: "",
-            dueDate: "" //why doesn't this work? 
+            dueDate: ""
         });
     }
 
-    onInputfieldUpdated(textFieldValue) {
-        this.setState({
-            taskDescription: textFieldValue
-        });
+
+    onInputfieldUpdated(inputFieldValue, inputFieldId) {
+        if (inputFieldId === "taskInput") {
+            this.setState({ taskDescription: inputFieldValue });
+        } else if (inputFieldId === "dateInput") {
+            this.setState({ dueDate: inputFieldValue });
+        }
     }
 
-    onDueDateUpdated(textFieldValue){
-        this.setState({
-            dueDate: textFieldValue
-        });
-    }
 
 
     render() {
@@ -58,23 +55,26 @@ class AddNewTask extends React.Component {
             <div style={styles.addTask} class="row">
                 <div className="col-sm-2"></div>
                 <div className="col-sm-3">
-                Task: 
+                    Task:
                     <InputField
                         taskValue={this.state.taskDescription}
                         changeHandler={this.onInputfieldUpdated}
                         onEnterPressed={this.onAddClicked}
                         placeholder="enter new task"
                         type="text"
+                        id="taskInput"
                     />
                 </div>
 
-                <div className="col-sm-3"> 
-                    Due: 
+                <div className="col-sm-3">
+                    Due:
                     <InputField
-                    taskValue={this.state.dueDate}
-                    changeHandler={this.onDueDateUpdated}
-                    placeholder="enter due date"
-                    type="date"
+                        taskValue={this.state.dueDate}
+                        changeHandler={this.onInputfieldUpdated}
+                        onEnterPressed={this.onAddClicked}
+                        placeholder="enter due date"
+                        type="date"
+                        id="dateInput"
                     />
                 </div>
 
@@ -82,7 +82,7 @@ class AddNewTask extends React.Component {
                     <GreenButton
                         clickHandler={this.onAddClicked}
                         label={'add'}
-                        
+
                     />
                 </div>
 
