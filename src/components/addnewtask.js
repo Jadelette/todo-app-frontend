@@ -25,6 +25,17 @@ class AddNewTask extends React.Component {
         const dueDate = this.state.dueDate;
 
         if(taskDescription && dueDate) {
+
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        
+        const compareDate = new Date(dueDate)
+        compareDate.setHours(0,0,0,0)
+
+        if(today > compareDate){
+            alert('Please select a valid date; due date cannot be in the past')
+        } else {
+            
         const taskToAdd = {
             id: Math.floor((Math.random() * 100)),
             description: taskDescription,
@@ -38,6 +49,7 @@ class AddNewTask extends React.Component {
             taskDescription: "",
             dueDate: ""
         });
+    }
     } else {
         alert("Please enter task description and select due date before clicking 'add'");
     }
