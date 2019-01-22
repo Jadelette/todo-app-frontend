@@ -13,9 +13,9 @@ class Header extends React.Component{
 
 const styles = {
     header : {
-        color: 'rgba(85, 107, 47, 0.94)',
+        color: 'rgba(62, 15, 47, 0.94)', // 85, 107, 47
         textAlign: 'center',
-        backgroundColor: 'rgba(240, 241, 229, 0.8)',
+        backgroundColor: 'rgba(250, 234, 245, 0.8)', // 240, 241, 229
         fontFamily: 'Great Vibes',
         padding: '0.1em',
         fontSize: '5em',

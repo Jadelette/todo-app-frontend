@@ -11,7 +11,7 @@ class RedButton extends React.Component{
 
 const styles = {
     delete : {
-       backgroundColor: 'darkred',
+       backgroundColor: 'rgb(102, 0, 51)',
        color: 'rgba(240, 241, 229, 0.8)',
        borderRadius: '1em',
        paddingLeft: '0.5em',

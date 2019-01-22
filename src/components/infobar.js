@@ -18,7 +18,7 @@ class InfoBar extends React.Component {
 
 const styles = {
     infobar: {
-        color: 'rgb(85, 107, 47)',
+        color: 'rgb(240, 193, 225)', //82, 20, 62
         textAlign: 'left',
         fontFamily: 'Great Vibes',
         fontSize: '1.7em',

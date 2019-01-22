@@ -6,12 +6,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  background-color: #d5d5c3;
-  background-image: url("./assets/ivyborder.jpg");
+  background-color: #8f246b;
+  background-image: url("./assets/starborder.png");
   background-repeat: repeat-y;
   height: 100%;
-  background-size: 40%;
+  background-size: 27%;
   background-position-x: 2%;
   /*color: rgb(85, 107, 47) kahki bckgrd #d5d5c3 */
 }
