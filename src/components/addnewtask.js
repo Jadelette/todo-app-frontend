@@ -69,9 +69,11 @@ class AddNewTask extends React.Component {
     render() {
         return (
             <div style={styles.addTask} class="row">
-                 <div className="col-sm-2"></div>
+                 <div className="col-sm-1"> </div>
+                
+                 <div className="col-sm-1">Task: </div>
+
                 <div className="col-sm-3">
-                    Task:
                     <InputField
                         taskValue={this.state.taskDescription}
                         changeHandler={this.onInputfieldUpdated}
@@ -81,9 +83,10 @@ class AddNewTask extends React.Component {
                         id="taskInput"
                     />
                 </div>
+
+                <div className="col-sm-1">Due: </div>
                 
                 <div className="col-sm-3">
-                    Due:
                     <InputField
                         taskValue={this.state.dueDate}
                         changeHandler={this.onInputfieldUpdated}
@@ -113,7 +116,7 @@ const styles = {
         textAlign: 'left',
         fontFamily: 'Great Vibes',
         fontSize: '1.7em',
-        marginTop: '20px',
+        marginTop: '40px',
         marginBottom: '20px',
         fontWeight: 'bold',
         alignItems: 'center'

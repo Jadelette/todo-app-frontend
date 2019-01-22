@@ -102,10 +102,10 @@ class App extends Component {
       <div className="container">
         <Header />
         <AddNewTask onAddTaskHandler={this.addTask} />
-        <hr />
+        <hr/>
         <InfoBar description="Active Tasks" items={this.state.activeTasks} />
         <Tasklist tasks={this.state.activeTasks} onDeleteTaskHandler={this.deleteTask} onCompleteTaskHandler={this.completeTask} />
-        <hr />
+        <hr/>
         <InfoBar description="Completed Tasks" items={this.state.completedTasks} />
         <Tasklist tasks={this.state.completedTasks} onRestoreTaskHandler={this.restoreTask} />
       </div>

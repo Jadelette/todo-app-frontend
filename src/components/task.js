@@ -51,9 +51,9 @@ class Task extends React.Component{
 
 const styles = {
     task : {
-        color: 'rgba(62, 15, 47, 0.94)',
+        color: 'rgba(51, 0, 25, 0.94)',
         textAlign: 'center',
-        backgroundColor: 'rgba(250, 234, 245, 0.8)',
+        backgroundColor: 'rgba(255, 230, 242, 0.8)',
         fontFamily: 'Garamond',
         padding: '0.2em',
         fontSize: '1.8em',
@@ -63,7 +63,8 @@ const styles = {
         borderRadius: '0.5em',
         marginBottom: '20px',
         fontStyle: 'italic',
-        alignItems: 'center'
+        alignItems: 'center',
+        boxShadow: '7px 7px'
     }
 
 };

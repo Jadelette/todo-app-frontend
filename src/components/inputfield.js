@@ -50,16 +50,16 @@ class InputField extends React.Component {
 
 const styles = {
     input: {
-        color: 'rgba(62, 15, 47, 0.94)',
+        color: 'rgba(51, 0, 25, 0.94)',
         textAlign: 'center',
-        backgroundColor: 'rgba(250, 234, 245, 0.8)',
+        backgroundColor: 'rgba(255, 230, 242, 0.8)',
         fontFamily: 'Garamond',
         fontSize: '0.7em',
         border: '0.07em',
         borderStyle: 'solid',
         borderRadius: '0.5em',
         fontStyle: 'italic',
-
+        boxShadow: '7px 7px'
     }
 
 };

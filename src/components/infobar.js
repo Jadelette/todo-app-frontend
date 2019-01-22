@@ -26,6 +26,7 @@ const styles = {
         marginBottom: '20px',
         fontWeight: 'bold',
         /*fontStyle: 'italic'*/
+        
     }
 
 };

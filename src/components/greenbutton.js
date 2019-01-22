@@ -18,7 +18,7 @@ const styles = {
        paddingRight: '0.5em',
        fontFamily: 'Garamond',
        fontSize: '0.7em',
-    
+       
     }
 
 };
