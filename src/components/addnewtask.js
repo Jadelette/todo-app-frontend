@@ -40,7 +40,8 @@ class AddNewTask extends React.Component {
             id: Math.floor((Math.random() * 100)),
             description: taskDescription,
             dueDate: dueDate,
-            done: false
+            done: false,
+            status: ""
         };
 
         this.props.onAddTaskHandler(taskToAdd);

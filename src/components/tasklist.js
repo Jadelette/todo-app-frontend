@@ -18,6 +18,7 @@ class Tasklist extends React.Component {
                     onDeleteTaskHandler={this.props.onDeleteTaskHandler}
                     onCompleteTaskHandler={this.props.onCompleteTaskHandler}
                     onRestoreTaskHandler={this.props.onRestoreTaskHandler}
+                    taskStatus={task.status}
                 />)}
             </div>
         )

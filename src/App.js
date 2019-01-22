@@ -25,9 +25,17 @@ class App extends Component {
   addTask(task) {
     let currentListOfTasks = this.state.activeTasks;
     
+    const today = new Date();
+    today.setHours(0,0,0,0);
     const fullDate = new Date(task.dueDate);
     const taskSortDate = String(fullDate.getFullYear())+String(fullDate.getMonth())+String(fullDate.getDate());
     task.taskSortDate = taskSortDate;
+
+    if(today > fullDate) {
+      task.status = "red";
+    } else {
+      task.status = "green";
+    }
     
     currentListOfTasks.push(task);
 

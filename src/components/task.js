@@ -42,6 +42,12 @@ class Task extends React.Component{
           {!(this.props.taskCompleted) &&
           <div className="col-sm-2"> <RedButton label={'delete'} clickHandler={this.onDeleteClicked} />  </div>
           }
+          {(this.props.taskStatus === "green") && !(this.props.taskCompleted) &&
+          <div className="col-sm-1"> <img src={'assets/greenicon.png'} height="30px"/>  </div>
+          }
+          {(this.props.taskStatus === "red") && !(this.props.taskCompleted) &&
+          <div className="col-sm-1"> <img src={'assets/redicon.png'} height="30px"/>  </div>
+          }
         </div>
           
 
