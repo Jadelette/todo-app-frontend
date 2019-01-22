@@ -24,6 +24,7 @@ class AddNewTask extends React.Component {
         const taskDescription = this.state.taskDescription;
         const dueDate = this.state.dueDate;
 
+        if(taskDescription && dueDate) {
         const taskToAdd = {
             id: Math.floor((Math.random() * 100)),
             description: taskDescription,
@@ -37,6 +38,9 @@ class AddNewTask extends React.Component {
             taskDescription: "",
             dueDate: ""
         });
+    } else {
+        alert("Please enter task description and select due date before clicking 'add'");
+    }
     }
 
 
@@ -53,7 +57,7 @@ class AddNewTask extends React.Component {
     render() {
         return (
             <div style={styles.addTask} class="row">
-                <div className="col-sm-2"></div>
+                 <div className="col-sm-2"></div>
                 <div className="col-sm-3">
                     Task:
                     <InputField
@@ -65,7 +69,7 @@ class AddNewTask extends React.Component {
                         id="taskInput"
                     />
                 </div>
-
+                
                 <div className="col-sm-3">
                     Due:
                     <InputField
@@ -77,7 +81,7 @@ class AddNewTask extends React.Component {
                         id="dateInput"
                     />
                 </div>
-
+               
                 <div className="col-sm-2">
                     <GreenButton
                         clickHandler={this.onAddClicked}
