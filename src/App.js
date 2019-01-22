@@ -24,7 +24,14 @@ class App extends Component {
 
   addTask(task) {
     let currentListOfTasks = this.state.activeTasks;
+    
+    const fullDate = new Date(task.dueDate);
+    const taskSortDate = String(fullDate.getFullYear())+String(fullDate.getMonth())+String(fullDate.getDate());
+    task.taskSortDate = taskSortDate;
+    
     currentListOfTasks.push(task);
+
+   currentListOfTasks.sort((a,b) => (a.taskSortDate > b.taskSortDate) ? 1 : -1);
 
     this.setState({
       activeTasks: currentListOfTasks
@@ -55,7 +62,7 @@ class App extends Component {
 
     const newCompletedTask = currentListOfTasks.filter((task) => task.id === taskID)[0];
     newCompletedTask.done = true;
-    currentCompletedTasks.push(newCompletedTask);
+    currentCompletedTasks.unshift(newCompletedTask);
 
 
     const indexToDelete = currentListOfTasks.findIndex(i => i.id === taskID);
@@ -78,6 +85,7 @@ class App extends Component {
     const newTaskToRestore = currentCompletedTasks.filter((task) => task.id === taskID)[0];
     newTaskToRestore.done = false;
     currentListOfTasks.push(newTaskToRestore);
+    currentListOfTasks.sort((a,b) => (a.taskSortDate > b.taskSortDate) ? 1 : -1);
 
     const indexToDelete = currentCompletedTasks.findIndex(i => i.id === taskID);
     currentCompletedTasks.splice(indexToDelete, 1);
