@@ -22,7 +22,7 @@ A task cannot be added with a due date in the past, or without a task descriptio
 
 To archive a task as completed, press the 'done' button. Archived tasks appear in the Completed Tasks list, below active tasks. 
 
-Active tasks are displayed in date order, with those with the closest due date appearing at the top of the list. 
+Active tasks are displayed in date order; those with the closest due date appear at the top of the list. 
 
 If you accidentally archive a task that is not complete, you can return it to the active tasks list by clicking 'restore'.
 
