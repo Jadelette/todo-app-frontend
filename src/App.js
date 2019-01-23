@@ -28,7 +28,6 @@ class App extends Component {
     const fullDate = new Date(task.dueDate);
     const taskSortDate = String(fullDate.getFullYear())+String(fullDate.getMonth())+String(fullDate.getDate());
     task.taskSortDate = taskSortDate;
-    //set status of task to green or red, depending on whether due date is past
     this.setTaskStatus(task);
     //add task to active tasks array
     currentListOfTasks.push(task);
@@ -99,7 +98,7 @@ class App extends Component {
     //find task in completed task array and push a copy to active task array (change 'done' to false and reset 'status')
     const newTaskToRestore = currentCompletedTasks.filter((task) => task.id === taskID)[0];
     newTaskToRestore.done = false;
-    this.setTaskStatus(newTaskToRestore);
+    //this.setTaskStatus(newTaskToRestore);
     currentListOfTasks.push(newTaskToRestore);
 
     //Sort active tasks array in date order (including restored task)
