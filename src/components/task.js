@@ -59,10 +59,10 @@ const styles = {
     task : {
         color: 'rgba(51, 0, 25, 0.94)',
         textAlign: 'center',
-        backgroundColor: 'rgba(255, 230, 242, 0.8)',
-        fontFamily: 'Garamond',
+        backgroundColor: 'rgba(255, 230, 242, 0.7)',
+        fontFamily: 'Cursive',
         padding: '0.2em',
-        fontSize: '1.8em',
+        fontSize: '1.5em',
         opacity: '50%',
         border: '0.07em',
         borderStyle: 'solid', 

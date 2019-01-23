@@ -69,12 +69,15 @@ class AddNewTask extends React.Component {
 
     render() {
         return (
+
+            <div className="container">
             <div style={styles.addTask} class="row">
+            
                  <div className="col-sm-1"> </div>
                 
-                 <div className="col-sm-1">Task: </div>
+                 <div className="col-sm-2">Task: </div>
 
-                <div className="col-sm-3">
+                <div className="col-sm-5">
                     <InputField
                         taskValue={this.state.taskDescription}
                         changeHandler={this.onInputfieldUpdated}
@@ -84,10 +87,15 @@ class AddNewTask extends React.Component {
                         id="taskInput"
                     />
                 </div>
+            </div>    
 
-                <div className="col-sm-1">Due: </div>
+                <div style={styles.addTask} class="row">
+
+                <div className="col-sm-1"> </div>
+
+                <div className="col-sm-2">Due: </div>
                 
-                <div className="col-sm-3">
+                <div className="col-sm-5">
                     <InputField
                         taskValue={this.state.dueDate}
                         changeHandler={this.onInputfieldUpdated}
@@ -107,15 +115,16 @@ class AddNewTask extends React.Component {
                 </div>
 
             </div>
+            </div>    
         )
     }
 }
 
 const styles = {
     addTask: {
-        color: 'rgb(240, 193, 225)',
+        color: 'rgb(240, 193, 225)', //
         textAlign: 'left',
-        fontFamily: 'Great Vibes',
+        fontFamily: 'Permanent Marker',
         fontSize: '1.7em',
         marginTop: '40px',
         marginBottom: '20px',

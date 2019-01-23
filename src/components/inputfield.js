@@ -52,14 +52,15 @@ const styles = {
     input: {
         color: 'rgba(51, 0, 25, 0.94)',
         textAlign: 'center',
-        backgroundColor: 'rgba(255, 230, 242, 0.8)',
-        fontFamily: 'Garamond',
-        fontSize: '0.7em',
+        backgroundColor: 'rgba(255, 230, 242, 0.7)',
+        fontFamily: 'Cursive',
+        fontSize: '0.6em',
         border: '0.07em',
         borderStyle: 'solid',
         borderRadius: '0.5em',
         fontStyle: 'italic',
-        boxShadow: '7px 7px'
+        boxShadow: '6px 6px'
+        
     }
 
 };

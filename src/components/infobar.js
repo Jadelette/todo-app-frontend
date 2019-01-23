@@ -8,6 +8,7 @@ class InfoBar extends React.Component {
         return (
             <div style={styles.infobar} class="container" >
                 <div className="row">
+                    
                     <div className="col-sm-2"> {this.props.description} </div>
                     <div className="col-sm-1" >{this.props.items.length}</div>
                 </div>
@@ -18,9 +19,9 @@ class InfoBar extends React.Component {
 
 const styles = {
     infobar: {
-        color: 'rgb(240, 193, 225)', //82, 20, 62
+        color: 'rgb(240, 193, 225)', //255, 77, 166
         textAlign: 'left',
-        fontFamily: 'Great Vibes',
+        fontFamily: 'Permanent Marker',
         fontSize: '1.7em',
         marginTop: '20px',
         marginBottom: '20px',

@@ -16,7 +16,7 @@ const styles = {
        borderRadius: '1em',
        paddingLeft: '0.5em',
        paddingRight: '0.5em',
-       fontFamily: 'Garamond',
+       fontFamily: 'Permanent Marker',
        fontSize: '0.7em',
        
     }
