@@ -11,7 +11,8 @@ class AddNewTask extends React.Component {
 
         this.state = {
             taskDescription: "",
-            dueDate: ""
+            dueDate: "",
+            taskStatus: ""
         };
 
         //event binding functions
@@ -24,38 +25,64 @@ class AddNewTask extends React.Component {
         const taskDescription = this.state.taskDescription;
         const dueDate = this.state.dueDate;
 
-        if(taskDescription && dueDate) {
-
-        const today = new Date();
-        today.setHours(0,0,0,0);
-        
-        const compareDate = new Date(dueDate)
-        compareDate.setHours(0,0,0,0)
-
-        if(today > compareDate){
-            alert('Please select a valid date; due date cannot be in the past')
-        } else {
-            
-        const taskToAdd = {
-            id: Math.floor((Math.random() * 100)),
-            description: taskDescription,
-            dueDate: dueDate,
-            done: false,
-            status: ""
-        };
-
-        this.props.onAddTaskHandler(taskToAdd);
-
         this.setState({
-            taskDescription: "",
-            dueDate: ""
+            taskStatus: "red"
         });
-    }
-    } else {
-        alert("Please enter task description and select due date before clicking 'add'");
-    }
+
+        alert(this.state.taskStatus);
+
+
+        //Ensure both fields contain an entry - if either field is empty alert user
+        if (taskDescription && dueDate) {
+
+            //If due date is past, alert user, otherwise add a new task to the active tasks array
+            if (this.checkFutureDueDate()) {
+                alert('Please select a valid date; due date cannot be in the past')
+            } else {
+                const taskToAdd = {
+                    id: Math.floor((Math.random() * 100)),
+                    description: taskDescription,
+                    dueDate: dueDate,
+                    done: false,
+                    status: this.state.taskStatus
+                };
+
+                this.props.onAddTaskHandler(taskToAdd);
+
+                this.setState({
+                    taskDescription: "",
+                    dueDate: ""
+                });
+            }
+        } else {
+            alert("Please enter task description and select due date before clicking 'add'");
+        }
     }
 
+    checkFutureDueDate() {
+        //get today's date and set time to 00:00
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        //change dueDate to date format
+        const compareDate = new Date(this.state.dueDate)
+        //if the dueDate is in the past, return true
+        if (today > compareDate) {
+            return true;
+        }
+    }
+
+    /*  setTaskStatus() {
+          if (this.checkFutureDueDate()) {
+              this.setState({
+                  taskStatus: "red"
+              })
+              alert(this.state.taskStatus)
+          } else {
+              this.setState({
+                  taskStatus: "green"
+              })
+          }
+      }*/
 
     onInputfieldUpdated(inputFieldValue, inputFieldId) {
         if (inputFieldId === "taskInput") {
@@ -66,56 +93,55 @@ class AddNewTask extends React.Component {
     }
 
 
-
     render() {
         return (
 
             <div className="container">
-            <div style={styles.addTask} class="row">
-            
-                 <div className="col-sm-1"> </div>
-                
-                 <div className="col-sm-2">Task: </div>
+                <div style={styles.addTask} class="row">
 
-                <div className="col-sm-5">
-                    <InputField
-                        taskValue={this.state.taskDescription}
-                        changeHandler={this.onInputfieldUpdated}
-                        onEnterPressed={this.onAddClicked}
-                        placeholder="enter new task"
-                        type="text"
-                        id="taskInput"
-                    />
+                    <div className="col-sm-1"> </div>
+
+                    <div className="col-sm-2">Task: </div>
+
+                    <div className="col-sm-5">
+                        <InputField
+                            taskValue={this.state.taskDescription}
+                            changeHandler={this.onInputfieldUpdated}
+                            onEnterPressed={this.onAddClicked}
+                            placeholder="enter new task"
+                            type="text"
+                            id="taskInput"
+                        />
+                    </div>
                 </div>
-            </div>    
 
                 <div style={styles.addTask} class="row">
 
-                <div className="col-sm-1"> </div>
+                    <div className="col-sm-1"> </div>
 
-                <div className="col-sm-2">Due: </div>
-                
-                <div className="col-sm-5">
-                    <InputField
-                        taskValue={this.state.dueDate}
-                        changeHandler={this.onInputfieldUpdated}
-                        onEnterPressed={this.onAddClicked}
-                        placeholder="enter due date"
-                        type="date"
-                        id="dateInput"
-                    />
-                </div>
-               
-                <div className="col-sm-2">
-                    <GreenButton
-                        clickHandler={this.onAddClicked}
-                        label={'add'}
+                    <div className="col-sm-2">Due: </div>
 
-                    />
+                    <div className="col-sm-5">
+                        <InputField
+                            taskValue={this.state.dueDate}
+                            changeHandler={this.onInputfieldUpdated}
+                            onEnterPressed={this.onAddClicked}
+                            placeholder="enter due date"
+                            type="date"
+                            id="dateInput"
+                        />
+                    </div>
+
+                    <div className="col-sm-2">
+                        <GreenButton
+                            clickHandler={this.onAddClicked}
+                            label={'add'}
+
+                        />
+                    </div>
                 </div>
 
             </div>
-            </div>    
         )
     }
 }

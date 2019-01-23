@@ -15,7 +15,7 @@ const styles = {
     header : {
         color: 'rgba(51, 0, 25, 0.90)', // 85, 107, 47
         textAlign: 'center',
-        backgroundColor: 'rgba(255, 230, 242, 0.7)', // 204, 0, 102  255, 230, 242
+        backgroundColor: 'rgba(255, 230, 242, 0.8)', // 204, 0, 102  255, 230, 242
         fontFamily: 'Permanent Marker',
         
         padding:'0.1em',
