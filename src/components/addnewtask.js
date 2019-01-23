@@ -25,39 +25,19 @@ class AddNewTask extends React.Component {
         const taskDescription = this.state.taskDescription;
         const dueDate = this.state.dueDate;
 
-        this.setState({
-            taskStatus: "red"
-        });
-
-        alert(this.state.taskStatus);
-
-
         //Ensure both fields contain an entry - if either field is empty alert user
         if (taskDescription && dueDate) {
 
-            //If due date is past, alert user, otherwise add a new task to the active tasks array
-            if (this.checkFutureDueDate()) {
-                alert('Please select a valid date; due date cannot be in the past')
-            } else {
-                const taskToAdd = {
-                    id: Math.floor((Math.random() * 100)),
-                    description: taskDescription,
-                    dueDate: dueDate,
-                    done: false,
-                    status: this.state.taskStatus
-                };
+            this.setTaskStatus(taskDescription, dueDate);
 
-                this.props.onAddTaskHandler(taskToAdd);
-
-                this.setState({
-                    taskDescription: "",
-                    dueDate: ""
-                });
-            }
         } else {
+
             alert("Please enter task description and select due date before clicking 'add'");
         }
+        //If due date is past, alert user, otherwise add a new task to the active tasks array
+
     }
+
 
     checkFutureDueDate() {
         //get today's date and set time to 00:00
@@ -71,18 +51,40 @@ class AddNewTask extends React.Component {
         }
     }
 
-    /*  setTaskStatus() {
+    createTaskToAdd(taskDescription, dueDate) {
+        if (this.checkFutureDueDate()) {
+            alert('Please select a valid date; due date cannot be in the past')
+        } else {
+            const taskToAdd = {
+                id: Math.floor((Math.random() * 100)),
+                description: taskDescription,
+                dueDate: dueDate,
+                done: false,
+                status: this.state.taskStatus
+            };
+            alert(taskToAdd.status);
+            this.props.onAddTaskHandler(taskToAdd);
+
+            this.setState({
+                taskDescription: "",
+                dueDate: ""
+            });
+        }
+    }
+
+
+     setTaskStatus(taskDescription, dueDate) {
           if (this.checkFutureDueDate()) {
               this.setState({
                   taskStatus: "red"
-              })
-              alert(this.state.taskStatus)
+              },
+              this.createTaskToAdd(taskDescription, dueDate))
           } else {
               this.setState({
                   taskStatus: "green"
-              })
+              }, this.createTaskToAdd(taskDescription, dueDate))
           }
-      }*/
+      }
 
     onInputfieldUpdated(inputFieldValue, inputFieldId) {
         if (inputFieldId === "taskInput") {
