@@ -30,7 +30,7 @@ Completed tasks are displayed with the most recently archived task at the top of
 
 ## Deleting a Task
 
-To remove a task that you no longer wish to complete, press the 'delete' button that shows when it is in the Active Tasks list. 
+To remove a task that you no longer wish to complete, press the 'delete' button that is displayed alongside each task in the Active Tasks list. 
 
 If you have already archived the task as complete, you will need to restore the task to active in order to delete it.
 
