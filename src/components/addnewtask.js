@@ -12,7 +12,7 @@ class AddNewTask extends React.Component {
         this.state = {
             taskDescription: "",
             dueDate: "",
-            taskStatus: ""
+            
         };
 
         //event binding functions
@@ -28,7 +28,8 @@ class AddNewTask extends React.Component {
         //Ensure both fields contain an entry - if either field is empty alert user
         if (taskDescription && dueDate) {
             //If due date is past, alert user, otherwise add a new task to the active tasks array
-            if (this.checkFutureDueDate()) {
+            const pastDue = this.props.checkDueDate(dueDate);
+            if (pastDue) {
                 alert('Please select a valid date; due date cannot be in the past')
             } else {
                 const taskToAdd = {
@@ -36,7 +37,7 @@ class AddNewTask extends React.Component {
                     description: taskDescription,
                     dueDate: dueDate,
                     done: false,
-                    status: this.state.taskStatus
+                    status: ""
                 };
                 
                 this.props.onAddTaskHandler(taskToAdd);
@@ -46,40 +47,11 @@ class AddNewTask extends React.Component {
                     dueDate: ""
                 });
             }
-
         } else {
-
             alert("Please enter task description and select due date before clicking 'add'");
         }
-        
-
     }
 
-
-    checkFutureDueDate() {
-        //get today's date and set time to 00:00
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        //change dueDate to date format
-        const compareDate = new Date(this.state.dueDate)
-        //if the dueDate is in the past, return true
-        if (today > compareDate) {
-            return true;
-        }
-    }
-
-
-     /*setTaskStatus() {
-          if (this.checkFutureDueDate()) {
-              this.setState({
-                  taskStatus: "red"
-              })
-          } else {
-              this.setState({
-                  taskStatus: "green"
-              })
-          }
-      }*/
 
     onInputfieldUpdated(inputFieldValue, inputFieldId) {
         if (inputFieldId === "taskInput") {
