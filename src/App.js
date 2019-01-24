@@ -29,7 +29,7 @@ class App extends Component {
     const taskSortDate = String(fullDate.getFullYear())+String(fullDate.getMonth())+String(fullDate.getDate());
     task.taskSortDate = taskSortDate;
     //Set task status to red or green, depending on due date
-    this.setTaskStatus(task);
+    //this.setTaskStatus(task);
     //add task to active tasks array
     currentListOfTasks.push(task);
     //sort array in date order (based on due date)
@@ -45,23 +45,13 @@ class App extends Component {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     //change dueDate to date format
-    const compareDate = new Date(dueDate)
+    const compareDate = new Date(dueDate);
+    alert(compareDate);
     //if the dueDate is in the past, return true
     if (today > compareDate) {
         return true;
     }
 }
-
-
-  setTaskStatus(task){
-    const pastDue = this.checkFutureDueDate(task.dueDate);  
-    //set status to green for future due date and red for past due date
-    if(pastDue) {
-      task.status = "red";
-    } else {
-      task.status = "green";
-    }
-  } //need to figure out how to make this fire on tasklist refresh/render
 
 
 
@@ -135,6 +125,7 @@ class App extends Component {
         tasks={this.state.activeTasks} 
         onDeleteTaskHandler={this.deleteTask} 
         onCompleteTaskHandler={this.completeTask} 
+        checkDate={this.checkFutureDueDate}
         />
         <hr/>
         <InfoBar description="Completed Tasks" items={this.state.completedTasks} />

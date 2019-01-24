@@ -29,6 +29,7 @@ class AddNewTask extends React.Component {
         if (taskDescription && dueDate) {
             //If due date is past, alert user, otherwise add a new task to the active tasks array
             const pastDue = this.props.checkDueDate(dueDate);
+            alert("addNewTask pastDue: " + pastDue)
             if (pastDue) {
                 alert('Please select a valid date; due date cannot be in the past')
             } else {
