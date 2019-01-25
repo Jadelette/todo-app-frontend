@@ -39,7 +39,7 @@ class App extends Component {
     });
   }
 
-  checkFutureDueDate(dueDate) {
+  checkPastDueDate(dueDate) {
     //get today's date and set time to 00:00
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -115,7 +115,7 @@ class App extends Component {
     return (
       <div className="container">
         <Header />
-        <AddNewTask onAddTaskHandler={this.addTask} checkDueDate={this.checkFutureDueDate} />
+        <AddNewTask onAddTaskHandler={this.addTask} checkDueDate={this.checkPastDueDate} />
         <hr/>
         <InfoBar description="Active Tasks" items={this.state.activeTasks} />
         <Tasklist 
@@ -123,10 +123,11 @@ class App extends Component {
         onDeleteTaskHandler={this.deleteTask} 
         onCompleteTaskHandler={this.completeTask} 
         setTaskStatusHandler={this.setTaskStatus}
+        checkDueDate = {this.checkPastDueDate}
         />
         <hr/>
         <InfoBar description="Completed Tasks" items={this.state.completedTasks} />
-        <Tasklist tasks={this.state.completedTasks} onRestoreTaskHandler={this.restoreTask} />
+        <Tasklist tasks={this.state.completedTasks} onRestoreTaskHandler={this.restoreTask} checkDueDate = {this.checkPastDueDate}/>
       </div>
     );
   }

@@ -12,14 +12,11 @@ class Tasklist extends React.Component {
     setTaskStatus() {
         let currentListOfTasks = this.props.tasks;
 
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
         for (let task of currentListOfTasks) {
-            const compareDate = new Date(task.dueDate);
-
+        
+           const pastDue =  this.props.checkDueDate(task.dueDate);
             //set status to green for future due date and red for past due date
-            if (today > compareDate) {
+            if (pastDue) {
                 task.status = "red";
             } else {
                 task.status = "green";
