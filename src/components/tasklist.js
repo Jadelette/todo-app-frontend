@@ -3,23 +3,51 @@ import Task from './task';
 
 class Tasklist extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.setTaskStatus = this.setTaskStatus.bind(this);
+    }
+
+    setTaskStatus() {
+        let currentListOfTasks = this.props.tasks;
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        for (let task of currentListOfTasks) {
+            const compareDate = new Date(task.dueDate);
+
+            //set status to green for future due date and red for past due date
+            if (today > compareDate) {
+                task.status = "red";
+            } else {
+                task.status = "green";
+            }
+        }
+        return currentListOfTasks;
+    }
+
     render() {
+
+        const tasks = this.setTaskStatus();
+
         return (
             <div style={styles.mytasks} className="container">
-                {this.props.tasks.map((task, i) => 
-                <Task 
-                    taskDescription={task.description} 
-                    taskDueDate={task.dueDate}
-                    taskSortDate=""
-                    key={i} 
-                    taskNumber={i+1} 
-                    taskID={task.id} 
-                    taskCompleted={task.done}
-                    onDeleteTaskHandler={this.props.onDeleteTaskHandler}
-                    onCompleteTaskHandler={this.props.onCompleteTaskHandler}
-                    onRestoreTaskHandler={this.props.onRestoreTaskHandler}
-                    taskStatus={task.status}
-                />)}
+                {tasks.map((task, i) =>
+                    <Task
+                        taskDescription={task.description}
+                        taskDueDate={task.dueDate}
+                        taskSortDate=""
+                        key={i}
+                        taskNumber={i + 1}
+                        taskID={task.id}
+                        taskCompleted={task.done}
+                        onDeleteTaskHandler={this.props.onDeleteTaskHandler}
+                        onCompleteTaskHandler={this.props.onCompleteTaskHandler}
+                        onRestoreTaskHandler={this.props.onRestoreTaskHandler}
+                        taskStatus={task.status}
+                    />)}
             </div>
         )
     }

@@ -28,8 +28,7 @@ class App extends Component {
     const fullDate = new Date(task.dueDate);
     const taskSortDate = String(fullDate.getFullYear())+String(fullDate.getMonth())+String(fullDate.getDate());
     task.taskSortDate = taskSortDate;
-    //Set task status to red or green, depending on due date
-    //this.setTaskStatus(task);
+
     //add task to active tasks array
     currentListOfTasks.push(task);
     //sort array in date order (based on due date)
@@ -51,18 +50,6 @@ class App extends Component {
         return true;
     }
 }
-
-
-  setTaskStatus(task){
-    const pastDue = this.checkFutureDueDate(task.dueDate);  
-    alert(task.taskDueDate);
-    //set status to green for future due date and red for past due date
-    if(pastDue) {
-      task.status = "red";
-    } else {
-      task.status = "green";
-    }
-  } //need to figure out how to make this fire on tasklist refresh/render
 
 
 
@@ -109,7 +96,6 @@ class App extends Component {
     //find task in completed task array and push a copy to active task array (change 'done' to false and reset 'status')
     const newTaskToRestore = currentCompletedTasks.filter((task) => task.id === taskID)[0];
     newTaskToRestore.done = false;
-    //this.setTaskStatus(newTaskToRestore);
     currentListOfTasks.push(newTaskToRestore);
 
     //Sort active tasks array in date order (including restored task)
