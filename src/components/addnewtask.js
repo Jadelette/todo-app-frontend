@@ -1,6 +1,6 @@
 import React from 'react';
 import InputField from './inputfield';
-import GreenButton from './greenbutton';
+import GoldButton from './goldbutton';
 
 
 class AddNewTask extends React.Component {
@@ -103,7 +103,7 @@ class AddNewTask extends React.Component {
                     </div>
 
                     <div className="col-sm-2">
-                        <GreenButton
+                        <GoldButton
                             clickHandler={this.onAddClicked}
                             label={'add'}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class GreenButton extends React.Component{
+class GoldButton extends React.Component{
 
     render() {
         return (
@@ -23,4 +23,4 @@ const styles = {
 
 };
 
-export default GreenButton;
+export default GoldButton;

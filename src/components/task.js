@@ -1,6 +1,6 @@
 import React from 'react';
 import RedButton from './redbutton';
-import GreenButton from './greenbutton';
+import GoldButton from './goldbutton';
 
 class Task extends React.Component{
 
@@ -34,10 +34,10 @@ class Task extends React.Component{
           <div className="col-sm-4"> {this.props.taskDescription}</div>
           <div className="col-sm-2">{this.props.taskDueDate}</div>
           {!(this.props.taskCompleted) &&
-          <div className="col-sm-2"> <GreenButton label={'done'} clickHandler={this.onDoneClicked} /> </div>
+          <div className="col-sm-2"> <GoldButton label={'done'} clickHandler={this.onDoneClicked} /> </div>
           }
           {(this.props.taskCompleted) &&
-          <div className="col-sm-2"> <GreenButton label={'restore'} clickHandler={this.onRestoreClicked} /> </div>
+          <div className="col-sm-2"> <GoldButton label={'restore'} clickHandler={this.onRestoreClicked} /> </div>
           }
           {!(this.props.taskCompleted) &&
           <div className="col-sm-2"> <RedButton label={'delete'} clickHandler={this.onDeleteClicked} />  </div>
