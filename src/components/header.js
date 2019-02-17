@@ -4,8 +4,10 @@ class Header extends React.Component{
 
     render() {
         return (
-        <div style={styles.header} className="row">
-        <div className="my-task-list col-sm-12"> <p> Task List</p></div>
+        <div  className="row">
+        <div className="col-sm-4"></div>
+        <div style={styles.header} className="my-task-list col-sm-4"> <p> Task List</p></div>
+        
         </div>
         )
 }
@@ -13,13 +15,12 @@ class Header extends React.Component{
 
 const styles = {
     header : {
-        color: 'rgba(51, 0, 25, 0.90)', // 85, 107, 47
+        color: 'rgba(0,0,26, 0.90)', //51, 0, 25
         textAlign: 'center',
-        backgroundColor: 'rgba(255, 230, 242, 0.8)', // 204, 0, 102  255, 230, 242
+        backgroundColor: 'rgba(230, 230, 255, 0.8)', //  230, 230, 255
         fontFamily: 'Permanent Marker',
-        
         padding:'0.1em',
-        fontSize: '5em',
+        fontSize: '4em',
         border: '0.05em',
         borderStyle: 'solid', 
         borderRadius: '1em',

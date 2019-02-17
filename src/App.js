@@ -3,6 +3,8 @@ import Header from './components/header';
 import Tasklist from './components/tasklist';
 import InfoBar from './components/infobar';
 import AddNewTask from './components/addnewtask';
+import TasksService from './service/tasks';
+import Axios from 'axios';
 
 
 class App extends Component {
@@ -20,20 +22,21 @@ class App extends Component {
     this.restoreTask = this.restoreTask.bind(this);
   }
 
+  async componentDidMount() {
+    const activeTasks = await TasksService.getActiveTasks();
+    const completedTasks = await TasksService.getCompletedTasks();
+    this.setState({ activeTasks: activeTasks });
+    this.setState({ completedTasks: completedTasks });
+  }
 
 
-  addTask(task) {
-    let currentListOfTasks = this.state.activeTasks;
-    //Create a numerical version of the duedate that will allow the array to be sorted in date order
-    const fullDate = new Date(task.dueDate);
-    const taskSortDate = String(fullDate.getFullYear())+String(fullDate.getMonth())+String(fullDate.getDate());
-    task.taskSortDate = taskSortDate;
 
-    //add task to active tasks array
-    currentListOfTasks.push(task);
-    //sort array in date order (based on due date)
-    currentListOfTasks.sort((a,b) => (a.taskSortDate > b.taskSortDate) ? 1 : -1);
-    //set the state of active task list to incorporate new task
+  async addTask(task) {
+    const response = await TasksService.saveTask(task);
+    task.taskId = response.data.insertId;
+
+    let currentListOfTasks = await TasksService.getActiveTasks();
+
     this.setState({
       activeTasks: currentListOfTasks
     });
@@ -47,68 +50,53 @@ class App extends Component {
     const compareDate = new Date(dueDate)
     //if the dueDate is in the past, return true
     if (today > compareDate) {
-        return true;
+      return true;
     }
-}
+  }
 
 
 
-  deleteTask(taskID) {
-    let currentListOfTasks = this.state.activeTasks;
-    //find task object in array based on task id property
-    const indexToDelete = currentListOfTasks.findIndex(i => i.id === taskID);
-    //remove task object from active tasks array
-    currentListOfTasks.splice(indexToDelete, 1);
+  async deleteTask(taskId) {
+    await TasksService.deleteTask(taskId);
+
+    let currentListOfTasks = await TasksService.getActiveTasks();
 
     this.setState({
       activeTasks: currentListOfTasks
-    });
-
-
+    })
   }
 
 
-  completeTask(taskID) {
-    let currentListOfTasks = this.state.activeTasks;
-    let currentCompletedTasks = this.state.completedTasks;
+  async completeTask(taskId) {
+    let currentListOfTasks = await TasksService.getActiveTasks();
+    const newTaskDetails = currentListOfTasks.filter((task) => task.taskId === taskId)[0];
+    newTaskDetails.done = "true";
 
-     //find task in active tasks array and push a compy to completed task array (change 'done' to true)
-    const newCompletedTask = currentListOfTasks.filter((task) => task.id === taskID)[0];
-    newCompletedTask.done = true;
-    currentCompletedTasks.unshift(newCompletedTask);
+    await TasksService.updateTask(taskId, newTaskDetails);
 
-    //Remove task from active tasks array
-    const indexToDelete = currentListOfTasks.findIndex(i => i.id === taskID);
-    currentListOfTasks.splice(indexToDelete, 1);
-
+    let updatedListOfActiveTasks = await TasksService.getActiveTasks();
+    let updatedListOfCompletedTasks = await TasksService.getCompletedTasks();
     this.setState({
-      activeTasks: currentListOfTasks,
-      completedTasks: currentCompletedTasks
-    });
+      activeTasks: updatedListOfActiveTasks,
+      completedTasks: updatedListOfCompletedTasks
+    })
   }
 
 
 
-  restoreTask(taskID) {
-    let currentListOfTasks = this.state.activeTasks;
-    let currentCompletedTasks = this.state.completedTasks;
+  async restoreTask(taskId) {
+    let currentListOfTasks = await TasksService.getCompletedTasks();
+    const newTaskDetails = currentListOfTasks.filter((task) => task.taskId === taskId)[0];
+      newTaskDetails.done = "false";
 
-    //find task in completed task array and push a copy to active task array (change 'done' to false and reset 'status')
-    const newTaskToRestore = currentCompletedTasks.filter((task) => task.id === taskID)[0];
-    newTaskToRestore.done = false;
-    currentListOfTasks.push(newTaskToRestore);
+    await TasksService.updateTask(taskId, newTaskDetails);
 
-    //Sort active tasks array in date order (including restored task)
-    currentListOfTasks.sort((a,b) => (a.taskSortDate > b.taskSortDate) ? 1 : -1);
-
-    //Remove task form completed tasks array
-    const indexToDelete = currentCompletedTasks.findIndex(i => i.id === taskID);
-    currentCompletedTasks.splice(indexToDelete, 1);
-
+    let updatedListOfActiveTasks = await TasksService.getActiveTasks();
+    let updatedListOfCompletedTasks = await TasksService.getCompletedTasks();
     this.setState({
-      activeTasks: currentListOfTasks,
-      completedTasks: currentCompletedTasks
-    });
+      activeTasks: updatedListOfActiveTasks,
+      completedTasks: updatedListOfCompletedTasks
+    })
   }
 
   render() {
@@ -116,18 +104,18 @@ class App extends Component {
       <div className="container">
         <Header />
         <AddNewTask onAddTaskHandler={this.addTask} checkDueDate={this.checkPastDueDate} />
-        <hr/>
+        <hr />
         <InfoBar description="Active Tasks" items={this.state.activeTasks} />
-        <Tasklist 
-        tasks={this.state.activeTasks} 
-        onDeleteTaskHandler={this.deleteTask} 
-        onCompleteTaskHandler={this.completeTask} 
-        setTaskStatusHandler={this.setTaskStatus}
-        checkDueDate = {this.checkPastDueDate}
+        <Tasklist
+          tasks={this.state.activeTasks}
+          onDeleteTaskHandler={this.deleteTask}
+          onCompleteTaskHandler={this.completeTask}
+          setTaskStatusHandler={this.setTaskStatus}
+          checkDueDate={this.checkPastDueDate}
         />
-        <hr/>
+        <hr />
         <InfoBar description="Completed Tasks" items={this.state.completedTasks} />
-        <Tasklist tasks={this.state.completedTasks} onRestoreTaskHandler={this.restoreTask} checkDueDate = {this.checkPastDueDate}/>
+        <Tasklist tasks={this.state.completedTasks} onRestoreTaskHandler={this.restoreTask} checkDueDate={this.checkPastDueDate} />
       </div>
     );
   }

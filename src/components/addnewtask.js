@@ -34,11 +34,11 @@ class AddNewTask extends React.Component {
                 alert('Please select a valid date; due date cannot be in the past')
             } else {
                 const taskToAdd = {
-                    id: Math.floor((Math.random() * 100)),
                     description: taskDescription,
                     dueDate: dueDate,
-                    done: false,
-                    status: ""
+                    done: "false",
+                    status: "green",
+                    userId: 1
                 };
                 
                 this.props.onAddTaskHandler(taskToAdd);
@@ -67,13 +67,13 @@ class AddNewTask extends React.Component {
         return (
 
             <div className="container">
-                <div style={styles.addTask} class="row">
+                <div style={styles.addTask} className="row">
 
-                    <div className="col-sm-1"> </div>
+                <div className="col-sm-1"> </div>
+                   
+                    <div className="col-sm-1">Task: </div>
 
-                    <div className="col-sm-2">Task: </div>
-
-                    <div className="col-sm-5">
+                    <div className="col-sm-3">
                         <InputField
                             taskValue={this.state.taskDescription}
                             changeHandler={this.onInputfieldUpdated}
@@ -83,15 +83,11 @@ class AddNewTask extends React.Component {
                             id="taskInput"
                         />
                     </div>
-                </div>
 
-                <div style={styles.addTask} class="row">
 
-                    <div className="col-sm-1"> </div>
+                    <div className="col-sm-1">Due: </div>
 
-                    <div className="col-sm-2">Due: </div>
-
-                    <div className="col-sm-5">
+                    <div className="col-sm-3">
                         <InputField
                             taskValue={this.state.dueDate}
                             changeHandler={this.onInputfieldUpdated}
@@ -118,15 +114,14 @@ class AddNewTask extends React.Component {
 
 const styles = {
     addTask: {
-        color: 'rgb(240, 193, 225)', //
+        color: 'rgba(230, 230, 255, 0.8)', //
         textAlign: 'left',
         fontFamily: 'Permanent Marker',
         fontSize: '1.7em',
         marginTop: '40px',
-        marginBottom: '20px',
-        fontWeight: 'bold',
+        marginBottom: '50px',
         alignItems: 'center'
-        /*fontStyle: 'italic'*/
+       
     }
 };
 

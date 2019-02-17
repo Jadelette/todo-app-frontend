@@ -25,7 +25,6 @@ class InputField extends React.Component {
     handleKeyPress(target) {
         if (target.charCode === 13) {
             this.props.onEnterPressed();
-            target.preventDefault();
         }
 
 
@@ -50,9 +49,9 @@ class InputField extends React.Component {
 
 const styles = {
     input: {
-        color: 'rgba(51, 0, 25, 0.94)',
+        color: 'rgba(0, 0, 26, 0.94)',
         textAlign: 'center',
-        backgroundColor: 'rgba(255, 230, 242, 0.7)',
+        backgroundColor: 'rgba(230, 230, 255, 0.7)',
         fontFamily: 'Cursive',
         fontSize: '0.6em',
         border: '0.07em',

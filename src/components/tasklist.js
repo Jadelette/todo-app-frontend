@@ -1,5 +1,6 @@
 import React from 'react';
 import Task from './task';
+const moment = require('moment');
 
 class Tasklist extends React.Component {
 
@@ -34,11 +35,11 @@ class Tasklist extends React.Component {
                 {tasks.map((task, i) =>
                     <Task
                         taskDescription={task.description}
-                        taskDueDate={task.dueDate}
+                        taskDueDate={moment(task.dueDate).format("Do MMM YY")}
                         taskSortDate=""
                         key={i}
                         taskNumber={i + 1}
-                        taskID={task.id}
+                        taskId={task.taskId}
                         taskCompleted={task.done}
                         onDeleteTaskHandler={this.props.onDeleteTaskHandler}
                         onCompleteTaskHandler={this.props.onCompleteTaskHandler}
