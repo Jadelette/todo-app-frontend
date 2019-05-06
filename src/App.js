@@ -83,7 +83,6 @@ class App extends Component {
   }
 
 
-
   async restoreTask(taskId) {
     let currentListOfTasks = await TasksService.getCompletedTasks();
     const newTaskDetails = currentListOfTasks.filter((task) => task.taskId === taskId)[0];

@@ -9,7 +9,7 @@ class Tasklist extends React.Component {
 
         this.setTaskStatus = this.setTaskStatus.bind(this);
     }
-
+   
     setTaskStatus() {
         let currentListOfTasks = this.props.tasks;
 
@@ -25,6 +25,7 @@ class Tasklist extends React.Component {
         }
         return currentListOfTasks;
     }
+
 
     render() {
 
